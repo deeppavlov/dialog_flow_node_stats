@@ -4,19 +4,19 @@ dff_node_stats is package, that extends basic [dialog_flow_engine](https://githu
 # Installation
 Installation:
 ```bash
-# install dialog flow framework
-pip install dff
-# Install dff_node_stats
-pip install dff-node-stats #basic
-# the default version is only capable of saving stats to a csv file.
-# However, you can use any combination of the listed extras that give you much more
-# freedom in saving and analyzing your data.
-# pip install dff-node-stats[api] # extra for rest-api interface
-# pip install dff-node-stats[streamlit] # extra for streamlit-based dashboard
-# pip install dff-node-stats[jupyter] # extra for jupyter-based dashboard
-# pip install dff-node-stats[pg] # extra for postgresql backend
-# pip install dff-node-stats[clickhouse] # extra for clickhouse backend
-# pip install dff-node-stats[all] # extra for all options
+pip install -r requirements.txt
+pip install -r requirements_dev.txt
+
+```
+# First examples
+```bash
+# run dff dialog bot and collect stats
+python examples/collect_stats.py
+# run dashboard (make sure you installed the lib with [streamlit] extra)
+# It can take several minutes
+streamlit run examples/run_dashboard_for_stats.py
+# run api and follow to swagger by http://localhost:8000/docs
+# note that [api] install option is required.
 ```
 # Code snippets
 
@@ -93,18 +93,18 @@ api_run(stats.dataframe)
 ```
 
 
-# Run Examples:
+# Run Other Examples:
 ```bash
 # run dff dialog bot and collect stats
-python examples/1.collect_stats.py
+python examples/collect_stats.py
 # or this one, they have differences only in a dialog scripts
-python examples/1.collect_stats_vscode_demo.py
+python examples/collect_stats_vscode_demo.py
 
 # run dashboard (make sure you installed the lib with [streamlit] extra)
-streamlit run examples/2.run_dashboard_for_stats.py
+streamlit run examples/run_dashboard_for_stats.py
 # run api and follow to swagger by http://localhost:8000/docs
 # note that [api] install option is required.
-python examples/2.get_stats_by_api.py
+python examples/get_stats_by_api.py
 # jupyter version of the dashboard can be launched by:
 jupyter notebook examples/run_dashboard.ipynb
 # you need to have [jupyter] option installed.
